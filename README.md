@@ -1,13 +1,13 @@
 # Arr-Macros
 A list of array macros for laravel with functions found across the web. 
 These macros also contain laravel's collection functions converted into array function macros.
-Some caveats: 
+## Some caveats: 
 The reasoning behind using Collections is the use of chaining methods and storing the array list as a property. You lose these abilities by using just the Arr helper class.
-The Arr helper does not store the array in itself so no chaining can be done. 
-The Arr helper just has predefined functions that the array goes through to be transformed.
-The Arr helper has all static methods.
-To mimic chaining you must pass the array from one function to another yourself.
-Most of the methods below require an array as the initial input and will output an array no collections.
+	The Arr helper does not store the array in itself so no chaining can be done. 
+	The Arr helper just has predefined functions that the array goes through to be transformed.
+	The Arr helper has all static methods.
+	To mimic chaining you must pass the array from one function to another yourself.
+	Most of the methods below require an array as the initial input and will output an array no collections.
 
 # Functions
 
