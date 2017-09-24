@@ -1,7 +1,7 @@
 # Arr-Macros
 A list of array macros for laravel with functions found across the web. 
 These macros also contain laravel's collection functions converted into array function macros.
-
+Some caveats: All these
 
 # Functions
 
