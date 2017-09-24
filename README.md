@@ -1,5 +1,5 @@
 # Arr-Macros
-A list of array macros for laravel with functions found across the web. 
+A list of array macros for laravel with functions found across the web and some I created. 
 These macros also contain laravel's collection functions converted into array function macros.
 The purpose of making this file is to remove the Collection wrapper class in cases when the user just wants the functionality
 that Collections provide without having ot worry when to convert at any point of their application.
@@ -113,9 +113,9 @@ that Collections provide without having ot worry when to convert at any point of
 	Arr::transpose : Transpose a array. Rows become columns, columns become rows.
 	Arr::transposeWithKeys : Transpose an array while keeping its columns and row headers intact.
 	Arr::transposeStrict : Transpose an array strictly. (Length errors are thrown)
-	Arr::crossJoin : Cross join the given arrays,
-	Arr::innerJoin : Inner join the given arrays,
-	Arr::outerJoin : Outer join the given arrays,
+	Arr::crossJoin : Cross join the given arrays.
+	Arr::innerJoin : Inner join the given arrays.
+	Arr::outerJoin : Outer join the given arrays.
 	Arr::union : Obtain the true union two arrays.
 		EXP:: In a venn diagram between A and B, this function returns all values found exclusively in A and exclusively in B 
 		and values shared between A and B. 
@@ -143,75 +143,75 @@ that Collections provide without having ot worry when to convert at any point of
 		In a venn diagram between A and B, this function returns all values found exclusively in A and and
     	commonly shared values.
      	(Left and Center of Venn Diagram)
-	Arr::intesect
-	Arr::intersectKeys
-	Arr::diff
-	Arr::diffAssoc
-	Arr::diffKeys
-	Arr::merge
-	Arr::mergeFlatMap
-	Arr::concat
-	Arr::combine
-	Arr::divide
-	Arr::zip
-	Arr::flatten
-	Arr::collapse
-	Arr::collapseWitKeys
-	Arr::implode
-	Arr::implodeWithKeys
-	Arr::implodeMulti
-	Arr::uppercase
-	Arr::isAccessible
-	Arr::isAssoc
-	Arr::isIndexed
-	Arr::isMulti
-	Arr::isEmpty
-	Arr::isNotEmpty
-	Arr::has
-	Arr::contains
-	Arr::containsStrict
-	Arr::every
-	Arr::paginate
-	Arr::simplePaginate
-	Arr::forPage
-	Arr::toSet
-	Arr::toSeries
-	Arr::toArray
-	Arr::toJson
-	Arr::toString
-	Arr::toGeneric
-	Arr::toGenericStrict
-	Arr::toCollection
-	Arr::toCollectionStrict
-	Arr::make
-	Arr::all
-	Arr::add
-	Arr::forget
-	Arr::put
-	Arr::push
-	Arr::pull
-	Arr::pop
-	Arr::shift
-	Arr::prepend
-	Arr::get
-	Arr::offsetGet
-	Arr::set
-	Arr::offsetSet
-	Arr::offsetUnset
-	Arr::exists
-	Arr::offsetExists
-	Arr::dot
-	Arr::undot
-	Arr::wrap
-	Arr::explodePluckParameters
-	Arr::jsonSerialize
-	Arr::valueRetriever
-	Arr::useAsCallable
-	Arr::getArrayableItems
-	Arr::getCachingIterator
-	Arr::operatorForWhere
-	Arr::toAssoc
-	Arr::dump
+	Arr::intesect : Intersect the array with the given items.
+	Arr::intersectKeys : Intersect the array with the given items by key.
+	Arr::diff : Get the items in the array that are not present in the given items.
+	Arr::diffAssoc : Get the items in the array whose keys and values are not present in the given items.
+	Arr::diffKeys : Get the items in the array whose keys are not present in the given items.
+	Arr::merge :  Merge the array with the given items.
+	Arr::mergeFlatMap : Merge the array after a flat map, preserving the keys.
+	Arr::concat : Push all of the given items onto the array.
+	Arr::combine : Create a array by using this array for keys and another for its values.
+	Arr::divide : Divide an array into two arrays. One with keys and the other with values.
+	Arr::zip : Zip the array together with one or more arrays.
+	Arr::flatten : Flatten a multi-dimensional array into a single level.
+	Arr::collapse : Collapse an array of arrays into a single array.
+	Arr::collapseWitKeys : Collapse an array of arrays into a single array, avoids using array_merge to preserve the keys.
+	Arr::implode : Concatenate values of an array.
+	Arr::implodeWithKeys : Concatenate values of a given key as a string.
+	Arr::implodeMulti : Concatenate values of a given key as a string in a multidimensional array.
+	Arr::uppercase : Map all items to uppercase.
+	Arr::isAccessible : Determine whether the given value is array accessible.
+	Arr::isAssoc : Determines if an array is associative.
+	Arr::isIndexed : Returns a value indicating whether the given array is an indexed array.
+	Arr::isMulti : Determines if an array is multidimensional.
+	Arr::isEmpty : Determines if the array is empty or not.
+	Arr::isNotEmpty : Determine if the array is not empty.
+	Arr::has : Check if an item or items exist in an array using "dot" notation.
+	Arr::contains : Determine if an item exists in the array.
+	Arr::containsStrict : Determine if an item exists in the array using strict comparison.
+	Arr::every : Determine if all items in the array pass the given test.
+	Arr::paginate : Paginate the given array.
+	Arr::simplePaginate : Paginate the array into a simple paginator
+	Arr::forPage : "Paginate" the array by slicing it into a smaller array.
+	Arr::toSet : Converts a model array into a dataset.
+	Arr::toSeries : Converts a model array into a multi-dataset series. 
+	Arr::toArray : Get the array of items as a plain array.
+	Arr::toJson : Get the array of items as JSON.
+	Arr::toString : Convert the array to its string representation.
+	Arr::toGeneric : Convert the array to an object.
+	Arr::toGenericStrict : Convert the array and all nested arrays into objects.
+	Arr::toCollection : Convert the array to a collection.
+	Arr::toCollectionStrict : Convert the array and all nested arrays into collections.
+	Arr::make : Create an empty array.
+	Arr::all : Return all values of the array.
+	Arr::add : Add an element to an array using "dot" notation if it doesn't exist.
+	Arr::forget : Remove one or many array items from a given array using "dot" notation.
+	Arr::put : Put an item in the array by key.
+	Arr::push : Push an item onto the end of the array.
+	Arr::pull : Get a value from the array, and remove it.
+	Arr::pop : Get and remove the last item from the array.
+	Arr::shift : Get and remove the first item from the array.
+	Arr::prepend : Push an item onto the beginning of an array.
+	Arr::get : Get an item from an array using "dot" notation.
+	Arr::offsetGet : Get an item at a given offset.
+	Arr::set : Set an array item to a given value using "dot" notation.
+	Arr::offsetSet : Set the item at a given offset.
+	Arr::offsetUnset : Unset the item at a given offset.
+	Arr::exists : Determine if the given key exists in the provided array.
+	Arr::offsetExists : Determine if an item exists at an offset.
+	Arr::dot : Flatten a multi-dimensional associative array with dots.
+	Arr::undot : Expands a dotted associative array. The inverse of Arr::dot().
+	Arr::wrap : If the given value is not an array, wrap it in one.
+	Arr::explodePluckParameters : Explode the "value" and "key" arguments passed to "pluck".
+	Arr::jsonSerialize : Convert the object into something JSON serializable.
+	Arr::valueRetriever :  Get a value retrieving callback.
+	Arr::useAsCallable : Determine if the given value is callable, but not a string.
+	Arr::getArrayableItems : Results array of items from array or Arrayable.
+	Arr::getCachingIterator : Get a CachingIterator instance.
+	Arr::operatorForWhere : Get an operator checker callback.
+	Arr::toAssoc : Create an associative keyed array the specified column values of the array.
+	Arr::dump : Dump the arguments given followed by the collection.
 
 
 
