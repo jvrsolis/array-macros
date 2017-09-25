@@ -346,7 +346,7 @@ if (!Arr::hasMacro('sortMulti')) {
      * @param  array  $array
      * @return array
      */
-    Arr::macro('sortRecursive', function (array $array) {
+    Arr::macro('sortMulti', function (array $array) {
         foreach ($array as &$value) {
             if (is_array($value)) {
                 $value = static::sortMulti($value);
@@ -388,7 +388,7 @@ if (!Arr::hasMacro('sortBy')) {
         : asort($results, $options);
 
         // Once we have sorted all of the keys in the array, we will loop through them
-        // and grab the corresponding model so we can set the underlying items list
+        // and grab the corresponding model so we can set the items list
         // to the sorted version. Then we'll just return the array instance.
         foreach (array_keys($results) as $key) {
             $results[$key] = $array[$key];
@@ -888,11 +888,11 @@ if (!Arr::hasMacro('ungroup')) {
      * Ungroup a previously grouped array (grouped by {@see Arr::groupBy()})
      */
     Arr::macro('ungroup', function (array $array) {
-        // create a new array to use as the array where the other collections are merged into
+        // create a new array to use as the array where the other arrays are merged into
         $newCollection = static::make([]);
 
         Arr::each($array, function ($item) use (&$newCollection) {
-            // use merge to combine the collections
+            // use merge to combine the arrays
             $newCollection = static::merge($newCollection, $item);
         });
 
@@ -928,7 +928,7 @@ if (!Arr::hasMacro('average')) {
 
 if (!Arr::hasMacro('count')) {
     /**
-     * Count the number of items in the collection.
+     * Count the number of items in the array.
      *
      * @var    array
      * @return int
@@ -1164,7 +1164,7 @@ if (!Arr::hasMacro('unless')) {
 
 if (!Arr::hasMacro('ifEmpty')) {
     /**
-     * Execute a callable if the array is empty, then return the collection.
+     * Execute a callable if the array is empty, then return the array.
      *
      * @param callable $callback
      *
@@ -1180,7 +1180,7 @@ if (!Arr::hasMacro('ifEmpty')) {
 
 if (!Arr::hasMacro('ifAny')) {
     /**
-     * Execute a callable if the array isn't empty, then return the collection.
+     * Execute a callable if the array isn't empty, then return the array.
      *
      * @param callable callback
      * @return \Illuminate\Support\Collection
@@ -1326,7 +1326,7 @@ if (!Arr::hasMacro('pluck')) {
 
 if (!Arr::hasMacro('values')) {
     /**
-     * Reset the keys on the underlying array.
+     * Reset the keys on the array.
      *
      * @return static
      */
@@ -1456,7 +1456,7 @@ if (!Arr::hasMacro('last')) {
 
 if (!Arr::hasMacro('after')) {
     /**
-     * Get the next item from the collection.
+     * Get the next item from the array.
      *
      * @param mixed $currentItem
      * @param mixed $fallback
@@ -1483,7 +1483,7 @@ if (!Arr::hasMacro('after')) {
 
 if (!Arr::hasMacro('before')) {
     /**
-     * Get the previous item from the collection.
+     * Get the previous item from the array.
      *
      * @param mixed $currentItem
      * @param mixed $fallback
@@ -1527,7 +1527,7 @@ if (!Arr::hasMacro('reduce')) {
 
 if (!Arr::hasMacro('slice')) {
     /**
-     * Slice the underlying array.
+     * Slice the array.
      *
      * @param  int  $offset
      * @param  int  $length
@@ -1540,7 +1540,7 @@ if (!Arr::hasMacro('slice')) {
 
 if (!Arr::hasMacro('sliceAssoc')) {
     /**
-     * Slice the underlying array having associative keys.
+     * Slice the array having associative keys.
      *
      * @param  int  $offset
      * @param  int  $length
@@ -1553,7 +1553,7 @@ if (!Arr::hasMacro('sliceAssoc')) {
 
 if (!Arr::hasMacro('splice')) {
     /**
-     * Splice a portion of the underlying collection array.
+     * Splice a portion of the array.
      *
      * @param  int  $offset
      * @param  int|null  $length
@@ -1634,7 +1634,7 @@ if (!Arr::hasMacro('nth')) {
 
 if (!Arr::hasMacro('chunk')) {
     /**
-     * Chunk the underlying array array.
+     * Chunk the array.
      *
      * @param  int  $size
      * @return static
@@ -1763,7 +1763,7 @@ if (!Arr::hasMacro('rotate')) {
 
 if (!Arr::hasMacro('shuffle')) {
     /**
-     * Shuffle the items in the collection.
+     * Shuffle the items in the array.
      *
      * @param  int  $seed
      * @return static
@@ -1901,7 +1901,7 @@ if (!Arr::hasMacro('reverseKeys')) {
 
 if (!Arr::hasMacro('flip')) {
     /**
-     * Flip the items in the collection.
+     * Flip the items in the array.
      *
      * @return array
      */
@@ -1912,7 +1912,7 @@ if (!Arr::hasMacro('flip')) {
 
 if (!Arr::hasMacro('transpose')) {
     /**
-     * Transpose a collection. Rows become columns, columns become rows.
+     * Transpose an array. Rows become columns, columns become rows.
      * E.g.     becomes
      *  [1,2]    [1,3]
      *  [3,4]    [2,4]
@@ -1942,7 +1942,7 @@ if (!Arr::hasMacro('transposeWithKeys')) {
 
         // Transpose the matrix
         $items = array_map(function (...$items) use ($keys) {
-            // The collection's keys now become column headers
+            // The array's keys now become column headers
             return array_combine($keys, $items);
         }, ...static::values($array));
 
@@ -2282,7 +2282,7 @@ if (!Arr::hasMacro('mergeFlatMap')) {
 
 if (!Arr::hasMacro('concat')) {
     /**
-     * Push all of the given items onto the collection.
+     * Push all of the given items onto the array.
      *
      * @param  \Traversable  $source
      * @return self
@@ -2347,7 +2347,7 @@ if (!Arr::hasMacro('zip')) {
     });
 }
 
-if (!Arr::hasMarco('flatten')) {
+if (!Arr::hasMacro('flatten')) {
     /**
      * Flatten a multi-dimensional array into a single level.
      *
@@ -2618,7 +2618,7 @@ if (!Arr::hasMacro('has')) {
 
 if (!Arr::hasMacro('contains')) {
     /**
-     * Determine if an item exists in the collection.
+     * Determine if an item exists in the array.
      *
      * @param  mixed  $key
      * @param  mixed  $operator
@@ -2701,7 +2701,7 @@ if (!Arr::hasMacro('every')) {
 
 if (!Arr::hasMacro('paginate')) {
     /**
-     * Paginate the given collection
+     * Paginate the given array
      *
      * @param int $perPage
      * @param int $total
@@ -2746,7 +2746,7 @@ if (!Arr::hasMacro('simplePaginate')) {
 
 if (!Arr::hasMacro('forPage')) {
     /**
-     * "Paginate" the array by slicing it into a smaller collection.
+     * "Paginate" the array by slicing it into a smaller array.
      *
      * @param  int  $page
      * @param  int  $perPage
@@ -2964,7 +2964,7 @@ if (!Arr::hasMacro('put')) {
 
 if (!Arr::hasMacro('push')) {
     /**
-     * Push an item onto the end of the collection.
+     * Push an item onto the end of the array.
      *
      * @param  mixed  $value
      * @return $array
@@ -2994,7 +2994,7 @@ if (!Arr::hasMacro('pull')) {
 
 if (!Arr::hasMacro('pop')) {
     /**
-     * Get and remove the last item from the collection.
+     * Get and remove the last item from the array.
      *
      * @return mixed
      */
@@ -3005,7 +3005,7 @@ if (!Arr::hasMacro('pop')) {
 
 if (!Arr::hasMacro('shift')) {
     /**
-     * Get and remove the first item from the collection.
+     * Get and remove the first item from the array.
      *
      * @return mixed
      */
@@ -3043,7 +3043,7 @@ if (!Arr::hasMacro('get')) {
      * @param  mixed   $default
      * @return mixed
      */
-    Arr::maro('get', function ($array, $key, $default = null) {
+    Arr::macro('get', function ($array, $key, $default = null) {
         if (!static::accessible($array)) {
             return value($default);
         }
@@ -3080,7 +3080,7 @@ if (!Arr::hasMacro('offsetGet')) {
     });
 }
 
-if (!Arr::hassMacro('set')) {
+if (!Arr::hasMacro('set')) {
     /**
      * Set an array item to a given value using "dot" notation.
      *
@@ -3370,7 +3370,7 @@ if (!Arr::hasMacro('toAssoc')) {
 
 if (!Arr::hasMacro('dump')) {
     /*
-     * Dump the arguments given followed by the collection.
+     * Dump the arguments given followed by the array.
      */
     Arr::macro('dump', function ($array) {
         $made = Arr::make(array_slice(func_get_args(), 1));
