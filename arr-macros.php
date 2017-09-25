@@ -339,9 +339,9 @@ if (!Arr::hasMacro('sort')) {
     });
 }
 
-if (!Arr::hasMacro('sortRecursive')) {
+if (!Arr::hasMacro('sortMulti')) {
     /**
-     * Recursively sort an array by keys and values.
+     * Sort a multidimensional array by keys and values.
      *
      * @param  array  $array
      * @return array
@@ -349,7 +349,7 @@ if (!Arr::hasMacro('sortRecursive')) {
     Arr::macro('sortRecursive', function (array $array) {
         foreach ($array as &$value) {
             if (is_array($value)) {
-                $value = static::sortRecursive($value);
+                $value = static::sortMulti($value);
             }
         }
 
