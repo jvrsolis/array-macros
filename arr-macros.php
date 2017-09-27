@@ -1287,6 +1287,21 @@ if (!Arr::hasMacro('flatMap')) {
     });
 }
 
+if (!Arr::hasMacro('filterMap')) {
+    /**
+     * Map an array, then filter the results.
+     *
+     * @param callable $map
+     * @param callable $filter
+     *
+     * @return array
+     */
+    Arr::macro('filterMap', function ($array, $map, $filter = null) {
+        $mapped = static::map($array, $map);
+        return static::filter($array, $filter);
+    });
+}
+
 if (!Arr::hasMacro('pluck')) {
     /**
      * Pluck an array of values from an array.
