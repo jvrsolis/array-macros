@@ -75,8 +75,9 @@ that Collections provide without having ot worry when to convert at any point of
 	Arr::mapWithKeys : Run an associative map over each of the items.
 	Arr::mapSpread : Run a map over each nested chunk of items.
 	Arr::mapToGroups : Run a grouping map over the items.
-	Arr::mapToAssoc : Map a array to associative key value pairings.
-	Arr::flatMap : Map a array and flatten the result by a single level.
+	Arr::mapToAssoc : Map an array to associative key value pairings.
+	Arr::flatMap : Map an array and flatten the result by a single level.
+	Arr::filterMap : Map an array and filter the results.
 	Arr::pluck : Pluck an array of values from an array.
 	Arr::values : Reset the keys on the underlying array.
 	Arr::keys : Get the keys of the array items.
