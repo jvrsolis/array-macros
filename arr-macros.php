@@ -308,16 +308,46 @@ if (!Arr::hasMacro('exceptEmpty')) {
     });
 }
 
-if (!Arr::hasMacro('only')) {
+if (Arr::hasMacro('only')) {
     /**
      * Get a subset of the items from the given array.
+     *
+     * @param  array         $array
+     * @param  array|string  $items
+     * @param  bool          $keys
+     * @return array
+     */
+    Arr::macro('only', function (array $array, $items, $keys = true) {
+        if ($keys) {
+            return static::onlyKeys($array, $items);
+        }
+        return static::onlyValues($array, $items);
+    });
+}
+
+if (!Arr::hasMacro('onlyKeys')) {
+    /**
+     * Get a subset of the items from an array given the keys.
      *
      * @param  array  $array
      * @param  array|string  $keys
      * @return array
      */
-    Arr::macro('only', function (array $array, $keys) {
+    Arr::macro('onlyKeys', function (array $array, $keys) {
         return array_intersect_key($array, array_flip((array) $keys));
+    });
+}
+
+if (!Arr::hasMacro('onlyValues')) {
+    /**
+     * Get a subset of the items from an array given the values.
+     *
+     * @param  array  $array
+     * @param  array|string  $keys
+     * @return array
+     */
+    Arr::macro('onlyValues', function (array $array, $values) {
+        return array_intersect($array, (array) $values);
     });
 }
 
@@ -2237,6 +2267,29 @@ if (!Arr::hasMacro('intersectKey')) {
     });
 }
 
+if (!Arr::hasMacro('intersectRecursive')) {
+    Arr::macro('intersectRecursive', function ($array) {
+        foreach (func_get_args() as $arg) {
+            $args[] = array_map('serialize', $arg);
+        }
+        $result = call_user_func_array('array_intersect', $args);
+
+        return array_map('unserialize', $result);
+    });
+}
+
+if (!Arr::hasMacro('intersectKeyRecursive')) {
+    Arr::macro('intersectKeyRecursive', function ($array1, $array2) {
+        $array1 = array_intersect_key($array1, $array2);
+        foreach ($array1 as $key => &$value) {
+            if (is_array($value) && is_array($array2[$key])) {
+                $value = array_intersect_key_recursive($value, $array2[$key]);
+            }
+        }
+        return $array1;
+    });
+}
+
 if (!Arr::hasMacro('diff')) {
     /**
      * Get the items in the array that are not present in the given items.
@@ -2270,6 +2323,108 @@ if (!Arr::hasMacro('diffKeys')) {
      */
     Arr::macro('diffKeys', function ($array, $items) {
         return array_diff_key($array, static::getArrayableItems($items));
+    });
+}
+
+if (!Arr::hasMacro('diffRecursive')) {
+    /**
+     * Computes the difference of arrays
+     * recursively.
+     *
+     * @param array  $array
+     * @param array  $array
+     * @return array
+     */
+    Arr::macro('diffRecursive', function ($arr1, $arr2) {
+        $outputDiff = [];
+
+        foreach ($arr1 as $key => $value) {
+            //if the key exists in the second array, recursively call this function
+            //if it is an array, otherwise check if the value is in arr2
+            if (array_key_exists($key, $arr2)) {
+                if (is_array($value)) {
+                    $recursiveDiff = array_diff_recursive($value, $arr2[$key]);
+
+                    if (count($recursiveDiff)) {
+                        $outputDiff[$key] = $recursiveDiff;
+                    }
+                } else if (!in_array($value, $arr2)) {
+                    $outputDiff[$key] = $value;
+                }
+            }
+            //if the key is not in the second array, check if the value is in
+            //the second array (this is a quirk of how array_diff works)
+            else if (!in_array($value, $arr2)) {
+                $outputDiff[$key] = $value;
+            }
+        }
+
+        return $outputDiff;
+    });
+}
+
+if (!Arr::hasMacro('mergeRecursive')) {
+    /**
+     * Merges the elements of one or more arrays together so that the values
+     * of one are appended to the end of the previous one.
+     * It returns the resulting array.
+     *
+     * @param array  $array
+     * @param array  $array
+     * @return array
+     */
+    Arr::macro('mergeRecursive', function () {
+        $args = func_get_args();
+
+        return array_merge_recursive(...$args);
+    });
+}
+
+if (!Arr::hasMacro('mergeRecursiveDistinct')) {
+    /**
+     * Merges the distinct elements of one or more arrays together so that the values
+     * of one are appended to the end of the previous one.
+     * It returns the resulting array.
+     *
+     * @param array  $array
+     * @param array  $array
+     * @return array
+     */
+    Arr::macro('mergeRecursiveDistinct', function (array &$array1, array &$array2) {
+        $merged = $array1;
+
+        foreach ($array2 as $key => &$value) {
+            if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+                $merged[$key] = array_merge_recursive_distinct($merged[$key], $value);
+            } else {
+                $merged[$key] = $value;
+            }
+        }
+
+        return $merged;
+    });
+}
+
+if (!Arr::hasMacro('intersectRecursive')) {
+    Arr::macro('intersectRecursive', function ($array) {
+        foreach (func_get_args() as $arg) {
+            $args[] = array_map('serialize', $arg);
+        }
+        $result = call_user_func_array('array_intersect', $args);
+
+        return array_map('unserialize', $result);
+    });
+}
+
+if (!Arr::hasMacro('intersectKeyRecursive')) {
+    Arr::macro('intersectKeyRecursive', function ($array1, $array2) {
+        $array1 = array_intersect_key($array1, $array2);
+        foreach ($array1 as $key => &$value) {
+            if (is_array($value) && is_array($array2[$key])) {
+                $value = array_intersect_key_recursive($value, $array2[$key]);
+            }
+        }
+        return $array1;
     });
 }
 
