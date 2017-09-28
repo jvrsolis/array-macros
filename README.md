@@ -146,9 +146,13 @@ that Collections provide without having ot worry when to convert at any point of
      	(Left and Center of Venn Diagram)
 	Arr::intesect : Intersect the array with the given items.
 	Arr::intersectKeys : Intersect the array with the given items by key.
+	Arr::intersectRecursive : Intersect the array recursively.
+	Arr::intersectKeysRecursive : Intersect key the array recursively.
 	Arr::diff : Get the items in the array that are not present in the given items.
 	Arr::diffAssoc : Get the items in the array whose keys and values are not present in the given items.
 	Arr::diffKeys : Get the items in the array whose keys are not present in the given items.
+	Arr::diffRecursive : Get the items in the arrays whos keys are not in the given items.
+	Arr::mergeRecursive : Merge the arrays recursively with the given items.
 	Arr::merge :  Merge the array with the given items.
 	Arr::mergeFlatMap : Merge the array after a flat map, preserving the keys.
 	Arr::concat : Push all of the given items onto the array.
