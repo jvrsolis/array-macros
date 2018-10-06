@@ -1,4 +1,4 @@
-# Arr-Macros
+# Array Macros
 A list of array macros for laravel with functions found across the web and some I created. 
 These macros also contain laravel's collection functions converted into array function macros.
 The purpose of making this file is to remove the Collection wrapper class in cases when the user just wants the functionality

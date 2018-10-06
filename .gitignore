@@ -1,2 +1,9 @@
 
 .phpintel/*
+/.idea/array-macros.iml
+.DS_Store
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/vendor/*
+.vscode/*
