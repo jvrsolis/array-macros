@@ -11,9 +11,14 @@ use Illuminate\Support\Arr;
 Arr::macro('min', function (array $array, $callback = null) {
     $callback = Arr::valueRetriever($callback);
 
-    $filter = Arr::filter($reduce, function ($value) {
+    $mapped = Arr::map($array, function ($value) use ($callback) {
+        return $callback($value);
+    });
+
+    $filter = Arr::filter($mapped, function ($value) {
         return !is_null($value);
     });
+
 
     return Arr::reduce($filter, function ($result, $item) use ($callback) {
         $value = $callback($item);
