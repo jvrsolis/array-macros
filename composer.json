@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "JvrSolis\\ArrayMacros\\": "src",
+      "JvrSolis\\ArrayMacros\\": "src"
     }
   },
   "autoload-dev": {
