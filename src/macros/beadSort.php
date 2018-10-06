@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Arr;
+
 Arr::macro('beadSort', function ($my_array) {
     $sortColumns = function ($my_array) {
         if (count($my_array) == 0) {
