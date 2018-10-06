@@ -47,5 +47,6 @@
         "JvrSolis\\ArrayMacros\\ArrayMacroServiceProvider"
       ]
     }
-  }
+  },
+  "minimum-stability": "dev"
 }
