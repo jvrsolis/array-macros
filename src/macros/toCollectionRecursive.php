@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Arr;
+
 /*
  * Dump the contents of the array and terminate the script.
  */
