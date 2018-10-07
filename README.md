@@ -1,8 +1,12 @@
+# <b>[WORK IN PROGRESS]</b>
 # Array Macros
 A list of array macros for laravel with functions found across the web and some I created. 
 These macros also contain laravel's collection functions converted into array function macros.
 The purpose of making this file is to remove the Collection wrapper class in cases when the user just wants the functionality
 that Collections provide without having ot worry when to convert at any point of their application.
+
+## Installation
+	composer require jvrsolis/array-macros:dev-master
 
 ## Some caveats: 
 	The reason on wants to use Collections is to be able to chain methods and have the original or modified array stored as a property to be readily accessible. 
