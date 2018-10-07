@@ -9,11 +9,31 @@ use Illuminate\Support\Arr;
  * @return static
  */
 Arr::macro('split', function ($array, int $numberOfGroups) {
-    if (static::isEmpty($array)) {
+    if (empty($array)) {
         return [];
     }
 
-    $groupSize = ceil(static::count($array) / $numberOfGroups);
+    $groups = [];
 
-    return Arr::chunk($array, $groupSize);
+    $groupSize = floor(count($array) / $numberOfGroups);
+
+    $remain = count($array) % $numberOfGroups;
+
+    $start = 0;
+
+    for ($i = 0; $i < $numberOfGroups; $i++) {
+        $size = $groupSize;
+
+        if ($i < $remain) {
+            $size++;
+        }
+
+        if ($size) {
+            array_push($groups, array_slice($this->items, $start, $size));
+
+            $start += $size;
+        }
+    }
+
+    return $groups;
 });

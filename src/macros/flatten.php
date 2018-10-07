@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
  * @param  int  $depth
  * @return array
  */
-Arr::macro('flatten', function ($array) {
+Arr::macro('flatten', function ($array, $depth = INF) {
     return array_reduce($array, function ($result, $item) use ($depth) {
         $item = $item instanceof Collection ? $item->all() : $item;
 

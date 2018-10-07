@@ -11,6 +11,12 @@ use Illuminate\Support\Arr;
  * @return \Closure
  */
 Arr::macro('operatorForWhere', function ($key, $operator, $value) {
+    if (func_num_args() === 1) {
+        $value = true;
+
+        $operator = '=';
+    }
+
     if (func_num_args() === 2) {
         $value = $operator;
 

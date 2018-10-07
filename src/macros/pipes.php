@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Arr;
+use Illuminate\Pipeline\Pipeline;
 
 /**
  * Pass the collection to the given callback and return the result.

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Arr;
+use Illuminate\Contracts\Pagination\Paginator;
 
 /**
  * Paginate the array into a simple paginator

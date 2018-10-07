@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Arr;
 
-/*
- * Dump the arguments given followed by the array.
+/**
+ * Dump the collection.
+ *
+ * @return $this
  */
 Arr::macro('dump', function ($array) {
     $made = Arr::make(array_slice(func_get_args(), 1));

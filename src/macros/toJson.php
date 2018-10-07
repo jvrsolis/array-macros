@@ -8,6 +8,6 @@ use Illuminate\Support\Arr;
  * @param  int  $options
  * @return string
  */
-Arr::macro('json', function ($array, $options = 0) {
+Arr::macro('toJson', function ($array, $options = 0) {
     return json_encode(Arr::jsonSerialize($array), $options);
 });
