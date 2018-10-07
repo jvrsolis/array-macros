@@ -1,6 +1,8 @@
 <?php
 
-Arr::macro('float', function ($array) {
+use Illuminate\Support\Arr;
+
+Arr::macro('toFloat', function ($array) {
     $function = function (&$array) use (&$function) {
         foreach ($array as $key => $value) {
             if (is_numeric($value)) {
