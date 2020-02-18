@@ -6,7 +6,7 @@ The purpose of making this file is to remove the Collection wrapper class in cas
 that Collections provide without having ot worry when to convert at any point of their application.
 
 ## Installation
-	composer require jvrsolis/array-macros:dev-master
+	composer require voicingewe/array-macros:dev-master
 
 ## Some caveats: 
 	The reason on wants to use Collections is to be able to chain methods and have the original or modified array stored as a property to be readily accessible. 
