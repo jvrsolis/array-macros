@@ -1,10 +1,10 @@
 <?php
 
-namespace JvrSolis\ArrayMacros\Test;
+namespace VoicingEwe\ArrayMacros\Test;
 
 use ReflectionClass;
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use JvrSolis\ArrayMacros\ArrayMacroServiceProvider;
+use VoicingEwe\ArrayMacros\ArrayMacroServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -21,7 +21,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Generate a dummy array macro service provider.
      *
-     * @return \JvrSolis\ArrayMacros\ArrayMacroServiceProvider
+     * @return \VoicingEwe\ArrayMacros\ArrayMacroServiceProvider
      * @throws \ReflectionException
      */
     protected function createDummyProvider() : ArrayMacroServiceProvider

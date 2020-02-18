@@ -1,6 +1,6 @@
 <?php
 
-namespace JvrSolis\ArrayMacros\Test;
+namespace VoicingEwe\ArrayMacros\Test;
 
 class IntegrationTest extends TestCase
 {

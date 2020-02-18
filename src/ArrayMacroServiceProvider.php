@@ -1,6 +1,6 @@
 <?php
 
-namespace JvrSolis\ArrayMacros;
+namespace VoicingEwe\ArrayMacros;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Arr;
@@ -14,7 +14,7 @@ use Illuminate\Support\ServiceProvider;
  * used to introduce \Illuminate\Support\Arr
  * macros.
  *
- * @package JvrSolis\ArrayMacros
+ * @package VoicingEwe\ArrayMacros
  */
 class ArrayMacroServiceProvider extends ServiceProvider
 {
